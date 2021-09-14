@@ -290,37 +290,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setClearColor('#262837')
 
 
-//Sounds effects
-const listener = new THREE.AudioListener()
-camera.add(listener)
-
-//Creating the sound
-const ghostSound = new THREE.Audio(listener)
-
-const audioLoader = new THREE.AudioLoader
-audioLoader.load(
-    '/sounds/scary.mp3',
-    (buffer) => {
-        /**
-         * Setting up personnal tweeks for the sound effect 
-         */
-        ghostSound.setBuffer(buffer);
-        ghostSound.setLoop(true);
-        ghostSound.setVolume(0.02); 
-        ghostSound.play()
-        /*  ghostSound.play();
-         ghostSound.setRefDistance(5)
-         ghostSound.setMaxDistance(10) */
-    }
-)
-console.log(ghostSound.getDistanceModel);
-
-//Linking the sound to a mesh 
-ghost3.add(ghostSound)
-ghost2.add(ghostSound)
-ghost1.add(ghostSound)
-
-
 /**
  * Shadows
  */
@@ -379,25 +348,10 @@ ghost3.shadow.camera.far = 7
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = PCFSoftShadowMap
 
-
-//Event to pause the sound 
-addEventListener('keypress', (evt) => {
-    console.log(evt)
-    if (evt.code === "KeyS") {
-        ghostSound.pause()
-    } else if(evt.code === "KeyP") {
-        ghostSound.play()
-    }
-})
-
-addEventListener('onload', () => {
-    ghostSound.play()
-})
 /**
  * Animate
  */
 const clock = new THREE.Clock()
-
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
