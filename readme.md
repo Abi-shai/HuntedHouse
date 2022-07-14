@@ -1,12 +1,4 @@
-# Haunted House Three-Js Journey Project
+# Haunted House
 
-## Setup 
-Run this followed commands to install:
-
-``` bash
-# Install dependencies (only the first time)
-npm install
-
-# Run the local server at localhost:8080
-npm run dev
-
+## About
+This is a project made while learning three.js and WebGl. One of the projets from the Threejs journey course https://threejs-journey.com/
